@@ -1,0 +1,8 @@
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.exe.config
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8_Db.mdf
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8_Db_log.ldf
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.exe
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.pdb
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\obj\Debug\Day8.csprojResolveAssemblyReference.cache
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\obj\Debug\Day8.exe
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\obj\Debug\Day8.pdb
