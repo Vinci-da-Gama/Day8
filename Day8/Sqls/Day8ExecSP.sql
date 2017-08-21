@@ -36,4 +36,8 @@ Declare @Rn Int;
 Exec @Rn = PrintReturnValAfterInsertRow
 Print @Rn
 
-Select * From Customers
+-- Select all Customers
+Exec SelectAllCustomers
+
+-- Select All Orders
+Exec SelectAllOrders
