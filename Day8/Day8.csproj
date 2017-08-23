@@ -56,6 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterAllCustomers\AdapterFetchAllCustomer.cs" />
+    <Compile Include="AdapterAllCustomers\AdapterInsertUpdateDelete.cs" />
+    <Compile Include="DbConnection.cs" />
+    <Compile Include="FetchAllCustomers\FetchAllCustomeres.cs" />
+    <Compile Include="LoopAndHint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

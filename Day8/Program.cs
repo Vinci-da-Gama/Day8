@@ -6,32 +6,41 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
+using Day8.FetchAllCustomers;
+using Day8.AdapterAllCustomers;
+
 namespace Day8
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Step1 - Handshake with database
-            string DataConnStr = "Data Source=LUCIFER-PC\\SQLEXPRESS;Initial Catalog=Day8_Db;Integrated Security=True";
-            SqlConnection DbConnection = new SqlConnection(DataConnStr);
-            DbConnection.Open();
+            Console.WriteLine("a for Selecting All Customers --- b for Selecting All Customer from Dataset. --- c for Inserting new row to Customers Table.");
+            char InputedKey = Console.ReadKey().KeyChar;
+            Console.WriteLine("19 -- "+InputedKey);
+            string SpAllCustomers = "SelectAllCustomers";
+            string InsertText = "INSERT INTO Customers ([First_Name], [Last_Name], [Email], Gender, Zip, [State], [Join_Date], CreditLimit) VALUES (@Fn, @Ln, @Email, @G, @Zip, @State, @Jd, @Cl)";
 
-            //Step2 - Spedify command
-            string cmdSp = "SelectAllCustomers";
-            SqlCommand myCmd = DbConnection.CreateCommand();
-            myCmd.CommandText = cmdSp;
-            myCmd.CommandType = CommandType.StoredProcedure;
-
-            SqlDataReader myDbReader;
-            myDbReader = myCmd.ExecuteReader();
-
-            //Step3 - Use Database
-            while (myDbReader.Read())
+            switch (InputedKey)
             {
-                Console.WriteLine(myDbReader[1]+" -- "+myDbReader[2]);
+                case 'a':
+                    Console.WriteLine("Cmd A for Selecting All Customers. Please wait for a while.");
+                    GetAllCustomersBySp AllCustomers = new GetAllCustomersBySp(SpAllCustomers);
+                    AllCustomers.PrintOutAllCustomersFirstNameAndLastName();
+                    break;
+                case 'b':
+                    GetCustomersByAdapter GetCustomers = new GetCustomersByAdapter(SpAllCustomers);
+                    Console.WriteLine("Cmd b for Selecting All Customers. please wait for a while.");
+                    GetCustomers.PrintCustomersByAdapter();
+                    break;
+                case 'c':
+                    AdapterInsertUpdateDelete AdapterInsert = new AdapterInsertUpdateDelete(InsertText);
+                    Console.WriteLine("Cmd c for Insert New Customer --> Then print all Customers.");
+                    AdapterInsert.InsertByAdapter();
+                    break;
+                default:
+                    break;
             }
-            DbConnection.Close();
 
             Console.ReadLine();
         }
