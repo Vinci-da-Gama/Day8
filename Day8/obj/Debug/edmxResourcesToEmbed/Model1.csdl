@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Day8_DbModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Day8_DbEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Day8_DbModel.Customer" />
+    <EntitySet Name="Orders" EntityType="Day8_DbModel.Order" />
+    <EntitySet Name="sysdiagrams" EntityType="Day8_DbModel.sysdiagram" />
+    <AssociationSet Name="FK_Orders_Customers" Association="Day8_DbModel.FK_Orders_Customers">
+      <End Role="Customers" EntitySet="Customers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <FunctionImport Name="AddNewCreditLimit" />
+    <FunctionImport Name="DropCreditLimi" />
+    <FunctionImport Name="DropCreditLimitAndAddNewOne" />
+    <FunctionImport Name="FindPeopleFromTexas" ReturnType="Collection(Day8_DbModel.FindPeopleFromTexas_Result)">
+      <Parameter Name="state" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GenerateRandomSmallMoney" />
+    <FunctionImport Name="InsertOneRowToOrders">
+      <Parameter Name="OdMLine" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertRowByOutputVariable">
+      <Parameter Name="LastRowNum" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="PrintReturnValAfterInsertRow" />
+    <FunctionImport Name="RemoveOrderPriceAndAddNew" />
+    <FunctionImport Name="ReturnLastRow">
+      <Parameter Name="ML" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ReturnLastRowForCustomerTable">
+      <Parameter Name="ML" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SelectAllCustomers" ReturnType="Collection(Day8_DbModel.SelectAllCustomers_Result)" />
+    <FunctionImport Name="SelectAllOrders" ReturnType="Collection(Day8_DbModel.SelectAllOrders_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Day8_DbModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Day8_DbModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="UpdateRandomValForCreditLimit" />
+  </EntityContainer>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="First_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Last_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Gender" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+    <Property Name="Zip" Type="Int32" Nullable="false" />
+    <Property Name="State" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Join_Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CreditLimit" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Orders" Relationship="Day8_DbModel.FK_Orders_Customers" FromRole="Customers" ToRole="Orders" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderProduct" Type="String" Nullable="false" MaxLength="60" Unicode="true" FixedLength="false" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="OrderPrice" Type="Decimal" Nullable="false" Precision="10" Scale="4" />
+    <NavigationProperty Name="Customer" Relationship="Day8_DbModel.FK_Orders_Customers" FromRole="Orders" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Orders_Customers">
+    <End Role="Customers" Type="Day8_DbModel.Customer" Multiplicity="1" />
+    <End Role="Orders" Type="Day8_DbModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customers">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="FindPeopleFromTexas_Result">
+    <Property Type="Int32" Name="CustomerId" Nullable="false" />
+    <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Last_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+    <Property Type="Int32" Name="Zip" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="Join_Date" Nullable="false" Precision="16" />
+    <Property Type="Int32" Name="CreditLimit" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllCustomers_Result">
+    <Property Type="Int32" Name="CustomerId" Nullable="false" />
+    <Property Type="String" Name="First_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Last_Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Gender" Nullable="true" MaxLength="6" />
+    <Property Type="Int32" Name="Zip" Nullable="false" />
+    <Property Type="String" Name="State" Nullable="false" MaxLength="30" />
+    <Property Type="DateTime" Name="Join_Date" Nullable="false" Precision="16" />
+    <Property Type="Int32" Name="CreditLimit" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectAllOrders_Result">
+    <Property Type="Int32" Name="OrderId" Nullable="false" />
+    <Property Type="String" Name="OrderProduct" Nullable="false" MaxLength="60" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="false" Precision="16" />
+    <Property Type="Int32" Name="CustomerId" Nullable="false" />
+    <Property Type="Decimal" Name="OrderPrice" Nullable="false" Precision="10" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Day8_DbModelStoreContainer" CdmEntityContainer="Day8_DbEntities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="Day8_DbModel.Customer">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Join_Date" ColumnName="Join_Date" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="Day8_DbModel.Order">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderProduct" ColumnName="OrderProduct" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Day8_DbModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="AddNewCreditLimit" FunctionName="Day8_DbModel.Store.AddNewCreditLimit" />
+    <FunctionImportMapping FunctionImportName="DropCreditLimi" FunctionName="Day8_DbModel.Store.DropCreditLimi" />
+    <FunctionImportMapping FunctionImportName="DropCreditLimitAndAddNewOne" FunctionName="Day8_DbModel.Store.DropCreditLimitAndAddNewOne" />
+    <FunctionImportMapping FunctionImportName="FindPeopleFromTexas" FunctionName="Day8_DbModel.Store.FindPeopleFromTexas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Day8_DbModel.FindPeopleFromTexas_Result">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Join_Date" ColumnName="Join_Date" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GenerateRandomSmallMoney" FunctionName="Day8_DbModel.Store.GenerateRandomSmallMoney" />
+    <FunctionImportMapping FunctionImportName="InsertOneRowToOrders" FunctionName="Day8_DbModel.Store.InsertOneRowToOrders" />
+    <FunctionImportMapping FunctionImportName="InsertRowByOutputVariable" FunctionName="Day8_DbModel.Store.InsertRowByOutputVariable" />
+    <FunctionImportMapping FunctionImportName="PrintReturnValAfterInsertRow" FunctionName="Day8_DbModel.Store.PrintReturnValAfterInsertRow" />
+    <FunctionImportMapping FunctionImportName="RemoveOrderPriceAndAddNew" FunctionName="Day8_DbModel.Store.RemoveOrderPriceAndAddNew" />
+    <FunctionImportMapping FunctionImportName="ReturnLastRow" FunctionName="Day8_DbModel.Store.ReturnLastRow" />
+    <FunctionImportMapping FunctionImportName="ReturnLastRowForCustomerTable" FunctionName="Day8_DbModel.Store.ReturnLastRowForCustomerTable" />
+    <FunctionImportMapping FunctionImportName="SelectAllCustomers" FunctionName="Day8_DbModel.Store.SelectAllCustomers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Day8_DbModel.SelectAllCustomers_Result">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Join_Date" ColumnName="Join_Date" />
+          <ScalarProperty Name="CreditLimit" ColumnName="CreditLimit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectAllOrders" FunctionName="Day8_DbModel.Store.SelectAllOrders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Day8_DbModel.SelectAllOrders_Result">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="OrderProduct" ColumnName="OrderProduct" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="OrderPrice" ColumnName="OrderPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Day8_DbModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Day8_DbModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Day8_DbModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Day8_DbModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Day8_DbModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Day8_DbModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Day8_DbModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Day8_DbModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Day8_DbModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="UpdateRandomValForCreditLimit" FunctionName="Day8_DbModel.Store.UpdateRandomValForCreditLimit" />
+  </EntityContainerMapping>
+</Mapping>

@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 using Day8.FetchAllCustomers;
 using Day8.AdapterAllCustomers;
+using Day8.EntitiesDbPractice;
 
 namespace Day8
 {
@@ -15,7 +16,7 @@ namespace Day8
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("a for Selecting All Customers --- b for Selecting All Customer from Dataset. --- c for Inserting new row to Customers Table.");
+            Console.WriteLine("a for Selecting All Customers --- b for Selecting All Customer from Dataset. --- c for Inserting new row to Customers Table. --- d for display customer first_name. --- e for Order Count --- f for menu");
             char InputedKey = Console.ReadKey().KeyChar;
             Console.WriteLine("19 -- "+InputedKey);
             string SpAllCustomers = "SelectAllCustomers";
@@ -37,6 +38,17 @@ namespace Day8
                     AdapterInsertUpdateDelete AdapterInsert = new AdapterInsertUpdateDelete(InsertText);
                     Console.WriteLine("Cmd c for Insert New Customer --> Then print all Customers.");
                     AdapterInsert.InsertByAdapter();
+                    break;
+                case 'd':
+                    EntitiesRead.DisplayCustomerFirstName();
+                    break;
+                case 'e':
+                    EntitiesCrud ecrud = new EntitiesCrud();
+                    ecrud.ShowMaxPricePerson();
+                    break;
+                case 'f':
+                    EntityWithStoreProcedures esp = new EntityWithStoreProcedures();
+                    esp.ShowMenuWithSp();
                     break;
                 default:
                     break;

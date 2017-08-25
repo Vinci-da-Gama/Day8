@@ -1,5 +1,9 @@
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\EntityDb.mdf
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\EntityDb_log.ldf
 C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.exe.config
 C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.exe
 C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\Day8.pdb
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\EntityFramework.dll
+C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\bin\Debug\EntityFramework.xml
 C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\obj\Debug\Day8.exe
 C:\LASTSemesterCshap\basicPractice\Day8_Solu\Day8\obj\Debug\Day8.pdb
